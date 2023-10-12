@@ -1,0 +1,63 @@
+<html>
+<head>
+<style>
+header {
+    background-color:rgb(20, 226, 209);
+    color:black;
+    text-align:center;
+    padding:5px;	 
+}
+nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:1460px;
+    width:100px;
+    float:left;
+    padding:5px;	      
+}
+section {
+    width:350px;
+    float:left;
+    padding:10px;	 	 
+}
+footer {
+    background-color:rgb(20, 226, 209);
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;	 	 
+}
+</style>
+</head>
+
+<body>
+<header>
+<h1> Weekly Planner </h1>
+</header>
+
+<nav>
+<a href="/webproject4830-techex-niebaum/get_weeks.java">Return</a> <br>
+</nav>
+
+<section>
+	<h1>Plans for the Week</h1>
+	
+	<form action="InsertWeek" method="POST">
+	       
+        Sunday: <textarea id="sunday" name="sunday" rows="10" cols="50"></textarea> <br/>
+        Monday: <textarea id="monday" name="monday" rows="10" cols="50"></textarea> <br/>
+        Tuesday: <textarea id="tuesday" name="tuesday" rows="10" cols="50"></textarea> <br/>
+        Wednesday: <textarea id="wednesday" name="wednesday" rows="10" cols="50"></textarea> <br/>
+        Thursday: <textarea id="thursday" name="thursday" rows="10" cols="50"></textarea> <br/>
+        Friday: <textarea id="friday" name="friday" rows="10" cols="50"></textarea> <br/>
+        Saturday: <textarea id="saturday" name="saturday" rows="10" cols="50"></textarea> 
+		
+		<input type="submit" value="Submit" />
+	</form>
+
+</section>
+
+<footer>
+</footer>
+</body>
+</html>
