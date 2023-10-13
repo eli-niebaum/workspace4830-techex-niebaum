@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/InsertNiebaum")
+@WebServlet("/InsertWeek")
 public class InsertWeek extends HttpServlet {
    private static final long serialVersionUID = 1L;
 
@@ -22,22 +22,30 @@ public class InsertWeek extends HttpServlet {
    }
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      String userName = request.getParameter("userName");
-      String email = request.getParameter("email");
-      String phone = request.getParameter("phone");
-      String address = request.getParameter("address");
+      String firstDate = request.getParameter("firstDate");
+      String sunday = request.getParameter("sunday");
+      String monday = request.getParameter("monday");
+      String tuesday = request.getParameter("tuesday");
+      String wednesday = request.getParameter("wednesday");
+      String thursday = request.getParameter("thursday");
+      String friday = request.getParameter("friday");
+      String saturday = request.getParameter("saturday");
 
       Connection connection = null;
-      String insertSql = " INSERT INTO MyTableNiebaum0907 (id, MYUSER, EMAIL, PHONE, ADDRESS) values (default, ?, ?, ?, ?)";
+      String insertSql = " INSERT INTO TableWeeklyPlanner (id, firstDate, sunday, monday, tuesday, wednesday, thursday, friday, saturday) values (default, ?, ?, ?, ?, ?, ?, ?, ?)";
 
       try {
          DBConnection.getDBConnection();
          connection = DBConnection.connection;
          PreparedStatement preparedStmt = connection.prepareStatement(insertSql);
-         preparedStmt.setString(1, userName);
-         preparedStmt.setString(2, email);
-         preparedStmt.setString(3, phone);
-         preparedStmt.setString(4, address);
+         preparedStmt.setString(1, firstDate);
+         preparedStmt.setString(2, sunday);
+         preparedStmt.setString(3, monday);
+         preparedStmt.setString(4, tuesday);
+         preparedStmt.setString(5, wednesday);
+         preparedStmt.setString(6, thursday);
+         preparedStmt.setString(7, friday);
+         preparedStmt.setString(8, saturday);
          preparedStmt.execute();
          connection.close();
       } catch (Exception e) {
@@ -47,7 +55,7 @@ public class InsertWeek extends HttpServlet {
       // Set response content type
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();
-      String title = "Insert Data to DB table";
+      String title = "Plans for the Week of: " + firstDate;
       String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + "transitional//en\">\n";
       out.println(docType + //
             "<html>\n" + //
@@ -56,14 +64,17 @@ public class InsertWeek extends HttpServlet {
             "<h2 align=\"center\">" + title + "</h2>\n" + //
             "<ul>\n" + //
 
-            "  <li><b>User Name</b>: " + userName + "\n" + //
-            "  <li><b>Email</b>: " + email + "\n" + //
-            "  <li><b>Phone</b>: " + phone + "\n" + //
-            "  <li><b>Address</b>: " + address + "\n" + //
+            "  <li><b>Sunday</b>: " + sunday + "\n" + //
+            "  <li><b>Monday</b>: " + monday + "\n" + //
+            "  <li><b>Tuesday</b>: " + tuesday + "\n" + //
+            "  <li><b>Wednesday</b>: " + wednesday + "\n" + //
+            "  <li><b>Thursday</b>: " + thursday + "\n" + //
+            "  <li><b>Friday</b>: " + friday + "\n" + //
+            "  <li><b>Saturday</b>: " + saturday + "\n" + //
 
             "</ul>\n");
 
-      out.println("<a href=/webproject-ex-0907-Niebaum/search_niebaum.html>Search Data</a> <br>");
+      out.println("<a href=/webproject4830-techex-niebaum/home_page.html>Return</a> <br>");
       out.println("</body></html>");
    }
 
